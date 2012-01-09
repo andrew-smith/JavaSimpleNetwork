@@ -1,4 +1,3 @@
-
 package server;
 
 import java.io.DataInputStream;
@@ -87,7 +86,7 @@ public class ConnectedClient extends Thread
      * @param message a message to send
      * @throws IOException if an exception occured
      */
-    public void sendMessage(ByteBuffer message) throws IOException
+    public synchronized void sendMessage(ByteBuffer message) throws IOException
     {
         message.rewind();
         out.writeInt(message.array().length); //writes the length of the buffer first
