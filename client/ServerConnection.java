@@ -1,5 +1,4 @@
 
-
 package client;
 
 import java.io.DataInputStream;
@@ -65,7 +64,7 @@ public abstract class ServerConnection extends Thread
      * @param message the message to send to the server
      * @throws IOException if an error occurs
      */
-    public void sendMessage(ByteBuffer message) throws IOException
+    public synchronized void sendMessage(ByteBuffer message) throws IOException
     {
         message.rewind();
         out.writeInt(message.array().length); //send length always first UNLESS it is an internal message
